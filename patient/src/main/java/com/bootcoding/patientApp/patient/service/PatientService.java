@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class PatientService {
 
-    public List<Patient> getPPatient(){
+    public List<Patient> getPatient(){
         return patientList;
     }
 
