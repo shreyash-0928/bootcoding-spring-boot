@@ -1,13 +1,12 @@
 package com.bootcoding.patientApp.patient.controller;
 
+import com.bootcoding.patientApp.patient.model.Patient;
 import com.bootcoding.patientApp.patient.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/patient/")
@@ -15,16 +14,21 @@ public class PatientController {
     @Autowired
     private PatientService patientService;
 
-    @GetMapping("all-patients")
-    public List<String> getAllPatients() {
-        int NoOfPatients = 10;
-        return patientService.getNewPatients(NoOfPatients);
+    @GetMapping("name")
+    public List<Patient> getAllPatient(){
+        return patientService.getAllPatient();
+    }
+    @GetMapping("name/{id}")
+    public Patient getPatientById(@PathVariable int id){
+        return patientService.getPatientById(id);
+    }
+    @PostMapping("register")
+    public boolean registerPatient(@RequestBody Patient patients){
+        return patientService.registerNewPatient(patients);
+    }
+    @PostMapping("register/new")
+    public boolean registerPatient(@RequestBody List<Patient> patients){
+        return patientService.registerNewPatient(patients);
     }
 
-    @GetMapping("patient/{name}")
-
-    public String getPatientObjectById(@PathVariable("name") String patientName) {
-        String patient = PatientService.newPatient();
-        return patient;
-    }
 }

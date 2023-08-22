@@ -1,23 +1,39 @@
 package com.bootcoding.patientApp.patient.service;
 
+import com.bootcoding.patientApp.patient.model.Patient;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
+@Service
 public class PatientService {
-    public static String newPatient() {
-        UUID uuid = UUID.randomUUID();
-        return uuid.toString();
 
+    public List<Patient> getPPatient(){
+        return patientList;
     }
 
-    public List<String> getNewPatients(int noOfPatients) {
-        List<String> patients = new ArrayList<>();
-        for(int i = 0; i < noOfPatients; i++){
-            String newPatient = newPatient();
-            patients.add(newPatient);
+    private List<Patient> patientList = new ArrayList<>();
+
+    public boolean registerNewPatient(Patient patient) {
+        patientList.add(patient);
+        return true;
+    }
+    public boolean registerNewPatient(List<Patient> patient) {
+        for(Patient p: patient){
+            registerNewPatient(p);
         }
-        return patients;
-
+        return true;
     }
+
+
+    public Patient getPatientById(int id) {
+        for (Patient p: patientList) {
+            if(id == p.getId()){
+                return p;
+            }
+        }
+        return null;
+    }
+
 }
