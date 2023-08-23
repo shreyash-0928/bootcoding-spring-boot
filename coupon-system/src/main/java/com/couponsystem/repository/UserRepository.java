@@ -1,12 +1,10 @@
 package com.couponsystem.repository;
 
 import com.couponsystem.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserRepository {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
-    public void save(User user){
-        System.out.println("User has been inserted into database");
-    }
 }
