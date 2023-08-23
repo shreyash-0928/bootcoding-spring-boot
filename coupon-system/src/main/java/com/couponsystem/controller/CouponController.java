@@ -1,4 +1,4 @@
-package com.couponsystem.Controller;
+package com.couponsystem.controller;
 
 import com.couponsystem.model.Coupon;
 import com.couponsystem.service.CouponService;
