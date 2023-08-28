@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 @Builder
 @Table(name = "Coupon_app")
@@ -11,7 +13,7 @@ import lombok.Data;
 
 // All properties should be private
 // Getter and Setters By default public rehte h ------> @Data(Annotation).
-public class Coupon {
+public class Coupon{
     @Id
     @GeneratedValue
     private String id;
@@ -20,7 +22,9 @@ public class Coupon {
     @Column(name = "Type")
     private String type;
     @Column(name = "Validity")
-    private int validFor;
+    private Date validDate;
+    @Column(name = "Discount")
+    private double discount;
     @Column(name = "Description")
     private String description;
     @Column(name = "Coupon_Code")
@@ -29,7 +33,11 @@ public class Coupon {
     private String category;
     @Column(name = "Created_date")
     private String createdDate;
+    @Column(name = "Create_By")
+    private String createBy;
     @Column(name = "Active_date")
     private String inActive;
+    @Column(name = "Status")
+    private String status;
 
 }
